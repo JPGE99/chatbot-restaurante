@@ -75,7 +75,7 @@ if (contactStep === "message") {
         rl.prompt();
         return;
     }
-    contactMessage = input.trim();
+    contactMessage = option;
 
     console.log("\n=== Solicitud registrada ===");
     console.log(`Nombre: ${contactName}`);
