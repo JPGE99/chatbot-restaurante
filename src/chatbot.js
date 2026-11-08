@@ -88,6 +88,7 @@ if (contactStep === "message") {
     console.log("\nGracias por comunicarte con nosotros.");
 
     console.log(menus.getContactInfo());
+    console.log(menus.getMainMenu());
 
     contactStep = null;
     contactName = "";
