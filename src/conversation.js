@@ -1,3 +1,5 @@
+/*conversation.js se encarga de gestionar la conversacion con el usuario */
+
 const menus = require ("./menus");
 
 //procesar los mensajes recibidos por el chatbot 
@@ -111,9 +113,9 @@ if (session.contactStep === "message") {
     }
 
 
-    return {
-        message: `Recibí tu mensaje: ${option}`
-    };
+   return {
+    message: "Opción no válida. Por favor, ingresa un número del 0 al 5."
+};
 }
     
 

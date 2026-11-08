@@ -1,3 +1,6 @@
+
+/*Menus.js se encarga de gestionar los menus del destaurante o los mensajes que se muestran al usuario
+aqui es donde se deven de definir los contenidos de las opciones presentadas al usuario por medio del chat */
 /*
 Primero creamos una funcion que nos devuele el menu principal, esta funcion se llama 
 getMainMenu y nos devuele un string con el menu principal del restaurante, en este caso el restaurante se llama Restaurante XYZ

@@ -1,8 +1,9 @@
+
+/*chatbot.js se encarga de iniciar el chatbot y gestionar la conversacion del usuario  */
 /*
 Llamamos al archivo menu.js para poder usar la funcion getMainMenu y mostrar el menu principal del restaurante.
 adicionalmente llamamos al modulo readline para leer la entrada del usuario desde la consola.
 */
-const menus = require ("./menus");
 const readline = require("node:readline");
 const conversation = require("./conversation");
 
@@ -23,7 +24,7 @@ function startChatbot() {
 
 
     console.log("== Chatbot Restaurante XYZ ==");
-    console.log(menus.getMainMenu());
+    console.log(conversation.processMessage("0", session).message);
 
     // Creamos una interfaz de lectura para leer la entrada del usuario desde la consola.
     const rl = readline.createInterface({
@@ -81,8 +82,8 @@ function startChatbot() {
                 console.log(conversation.processMessage(option, session).message);
                 rl.close();
                 return;
-            default: 
-                console.log("Opcion no valida. por favor ingrese un numero del 1 al 5.");
+           default:
+                console.log(conversation.processMessage(option, session).message);
                 break;
         }
         rl.prompt();
