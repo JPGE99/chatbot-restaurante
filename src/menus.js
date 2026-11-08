@@ -11,7 +11,8 @@ function getMainMenu() {
     ¡Hola! Bienvenido al Restaurante XYZ. 
     ¿En qué podemos ayudarte?
 
-    0. Escribe 0 para volver a mostrar el menu.
+    0. Escribe 0 en cualquier momento para volver 
+    a mostrar estas opciones.
     1. Consultar menú
     2. Horarios y ubicación
     3. Promociones

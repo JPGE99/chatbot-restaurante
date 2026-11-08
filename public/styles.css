@@ -1,0 +1,122 @@
+
+/* Configuración general */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Contenedor principal del chatbot */
+.chat-container {
+    width: 90%;
+    max-width: 450px;
+    height: 600px;
+    max-height: 90vh;
+
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Encabezado */
+.chat-header {
+    background-color: #234c3c;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.chat-header h1 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.chat-header p {
+    margin: 5px 0 0;
+    font-size: 14px;
+}
+
+/* Área donde aparecerán los mensajes */
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #fafafa;
+}
+
+.chat-messages p {
+    background-color: #e9ecef;
+    padding: 12px;
+    border-radius: 10px;
+    line-height: 1.5;
+}
+
+/* Formulario para enviar mensajes */
+.chat-form {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    border-top: 1px solid #ddd;
+}
+
+.chat-form input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.chat-form button {
+    padding: 12px 18px;
+    background-color: #234c3c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.chat-form button:hover {
+    background-color: #326b55;
+}
+
+
+
+/* Estilos generales de los mensajes */
+.chat-messages .message {
+    max-width: 85%;
+    width: fit-content;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 12px;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+/* Mensajes enviados por el cliente */
+.chat-messages .user {
+    background-color: #d9f3e5;
+    margin-left: auto;
+    text-align: left;
+}
+
+/* Respuestas del chatbot */
+.chat-messages .bot {
+    background-color: #e9ecef;
+    margin-right: auto;
+    text-align: left;
+}

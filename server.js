@@ -5,17 +5,21 @@ const conversation = require("./src/conversation");
 const app = express();
 
 app.use(express.json());
+app.use(express.static("public"));
 
 const PORT = 3000;
 
 //Esta funcion es la que se encarga de iniciar el servidor y escuchar las peticiones del cliente, ademas de procesar los mensajes recibidos por el chatbot.
 const sessions = new Map();
 
-app.get("/", (req, res) => {
-    res.send("Servidor del chatbot restaurante funcionando correctamente.");
+// Ruta para obtener el menú principal del chatbot.
+app.get("/menu", (req, res) => {
+    const session = conversation.createSession();
+    const response = conversation.processMessage("0", session);
+
+    res.json(response);
 });
-
-
+// Ruta para procesar los mensajes del chatbot.
 app.post("/chat", (req, res) => {
     const { message, clientId } = req.body;
 
