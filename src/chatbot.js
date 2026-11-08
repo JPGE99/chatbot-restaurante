@@ -21,10 +21,6 @@ function startChatbot() {
     // Creamos un objeto session para almacenar el estado de la conversación y los datos del cliente.
     const session = conversation.createSession();
 
-    // Variables para almacenar temporalmente los datos del cliente.    
-    let contactStep = null; 
-    let contactName = "";
-    let contactMessage = "";
 
     console.log("== Chatbot Restaurante XYZ ==");
     console.log(menus.getMainMenu());
@@ -60,64 +56,6 @@ function startChatbot() {
     return;
 }
 
-        //Permite al usuario cancelar una solicitud de contacto el cualquier momento al escribir 0 
-    if (contactStep !== null && option === "0") {
-    console.log("\nSolicitud de contacto cancelada.");
-    contactStep = null;
-    contactName = "";
-    contactMessage = "";
-    
-    rl.setPrompt("Ingrese su opcion:");
-    console.log(menus.getMainMenu());
-    rl.prompt();
-    return;
-    }
-
-
-
-// Comprobamos si el chatbot está recopilando información del cliente.
-if (contactStep === "name") {
-    if (option === "") {
-    console.log("Por favor, ingresa tu nombre.");
-    rl.prompt();
-    return;
-}
-
-contactName = option;
-
-    contactStep = "message";
-    console.log(`Mucho gusto, ${contactName}.`);
-    console.log("¿En qué podemos ayudarte?");
-    rl.setPrompt("Describe tu consulta: ");
-    rl.prompt();
-    return;
-}
-
-if (contactStep === "message") {
-    if (option === ""){
-        console.log("Por favor, describe brevemente tu consulta.");
-        rl.prompt();
-        return;
-    }
-    contactMessage = option;
-
-    console.log("\n=== Solicitud registrada ===");
-    console.log(`Nombre: ${contactName}`);
-    console.log(`Consulta: ${contactMessage}`);
-
-    console.log("\nGracias por comunicarte con nosotros.");
-
-    console.log(menus.getContactInfo());
-    console.log(menus.getMainMenu());
-
-    contactStep = null;
-    contactName = "";
-    contactMessage = "";
-
-    rl.setPrompt("Ingrese su opción: ");
-    rl.prompt();
-    return;
-}
         switch (option) {
             case "0":
                 console.log(conversation.processMessage(option, session).message);
@@ -139,8 +77,8 @@ if (contactStep === "message") {
                 console.log(conversation.processMessage(option, session).message);
                 rl.setPrompt("Ingresa tu nombre: ");
                 break;
-            case"5":
-                console.log("Cerrando el chatbot. ¡Hasta luego!");
+           case "5":
+                console.log(conversation.processMessage(option, session).message);
                 rl.close();
                 return;
             default: 
@@ -149,6 +87,7 @@ if (contactStep === "message") {
         }
         rl.prompt();
     });
+
 
     // Cuando el usuario cierra la interfaz de lectura, mostramos un mensaje de despedida.
     rl.on("close",()=>{
