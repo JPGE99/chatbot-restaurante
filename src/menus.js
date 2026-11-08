@@ -92,13 +92,6 @@ function getContactInfo() {
     Correo: contacto@restaurantexyz.com
 
     Nuestro personal estará encantado de ayudarte.
-    si desea continuar consultando el bot seleccione una de las siguientes opciones 
-    0. Escribe 0 para volver a mostrar el menu.
-    1. Consultar menú
-    2. Horarios y ubicación
-    3. Promociones
-    4. Contactar a un empleado
-    5.Escribe 5 para cerrar el chatbot.
     `;
 }
 
