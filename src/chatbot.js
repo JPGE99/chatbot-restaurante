@@ -4,7 +4,7 @@ adicionalmente llamamos al modulo readline para leer la entrada del usuario desd
 */
 const menus = require ("./menus");
 const readline = require("node:readline");
-
+const conversation = require("./conversation");
 
 
 
@@ -17,6 +17,9 @@ posteriormente se encarga de leer la entrada del usuario y mostrar un mensaje de
 la consola.
 */
 function startChatbot() {
+
+    // Creamos un objeto session para almacenar el estado de la conversación y los datos del cliente.
+    const session = conversation.createSession();
 
     // Variables para almacenar temporalmente los datos del cliente.    
     let contactStep = null; 
@@ -39,8 +42,25 @@ function startChatbot() {
     rl.on("line", (input) => {
         const option = input.trim();
 
-        //Permite al usuario cancelar una solicitud de contacto el cualquier momento al escribir 0 
+        if (session.contactStep !== null) {
 
+    const response = conversation.processMessage(option, session);
+
+    console.log(response.message);
+
+    if (session.contactStep === "name") {
+        rl.setPrompt("Ingresa tu nombre: ");
+    } else if (session.contactStep === "message") {
+        rl.setPrompt("Describe tu consulta: ");
+    } else {
+        rl.setPrompt("Ingrese su opción: ");
+    }
+
+    rl.prompt();
+    return;
+}
+
+        //Permite al usuario cancelar una solicitud de contacto el cualquier momento al escribir 0 
     if (contactStep !== null && option === "0") {
     console.log("\nSolicitud de contacto cancelada.");
     contactStep = null;
@@ -100,28 +120,23 @@ if (contactStep === "message") {
 }
         switch (option) {
             case "0":
-                console.log("Mostrando el menu principal nuevamente:");
-                console.log(menus.getMainMenu());
+                console.log(conversation.processMessage(option, session).message);
                 break;
-            case "1":
-                const foodMenu = menus.getFoodMenu(); 
-                console.log(foodMenu.message);
-                console.log(foodMenu.image);
+            case "1": {
+                const foodResponse = conversation.processMessage(option, session);
+                console.log(foodResponse.message);
+                console.log(foodResponse.image);
                 break;
+                    }       
             case "2":
-                console.log("Has seleccionado la opción 2: Horarios y ubicación.");
-                console.log(menus.getLocationInfo());
+                 const response = conversation.processMessage(option, session);
+                console.log(response.message);
                 break;
             case "3":
-                console.log("Has seleccionado la opción 3: Promociones.");
-                console.log(menus.getPromotions());
-                break;  
+                console.log(conversation.processMessage(option, session).message);
+                break; 
             case "4":
-                console.log("Has seleccionado la opción 4: Contactar a un empleado.");
-                contactStep = "name";
-                console.log("\n📞 Contactar a un empleado");
-                 console.log("Para ayudarte, necesitamos algunos datos.");
-                 console.log("Si deseas cancelar la solicitud de contacto, escribe 0 en cualquier momento.");
+                console.log(conversation.processMessage(option, session).message);
                 rl.setPrompt("Ingresa tu nombre: ");
                 break;
             case"5":
