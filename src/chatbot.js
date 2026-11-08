@@ -53,18 +53,13 @@ function startChatbot() {
 
 // Comprobamos si el chatbot está recopilando información del cliente.
 if (contactStep === "name") {
-    if (option === ""){
-        console.log("Por favor, ingresa tu nombre.");
-        rl.prompt();
-        return;
-    }
-    contactName = input.trim();
+    if (option === "") {
+    console.log("Por favor, ingresa tu nombre.");
+    rl.prompt();
+    return;
+}
 
-    if (!contactName) {
-        console.log("Por favor, ingresa tu nombre.");
-        rl.prompt();
-        return;
-    }
+contactName = option;
 
     contactStep = "message";
     console.log(`Mucho gusto, ${contactName}.`);
@@ -81,12 +76,6 @@ if (contactStep === "message") {
         return;
     }
     contactMessage = input.trim();
-
-    if (!contactMessage) {
-        console.log("Por favor, describe brevemente tu consulta.");
-        rl.prompt();
-        return;
-    }
 
     console.log("\n=== Solicitud registrada ===");
     console.log(`Nombre: ${contactName}`);
