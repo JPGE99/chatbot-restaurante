@@ -9,9 +9,7 @@ const readline = require("node:readline");
 
 
 //Variables para almacenar temporalmente los datos del cliente.
-let contactStep = null; 
-let contactName = "";
-let contactMessage = "";
+
 
 /*
 Definimos la funcion startChatbot, esta funcion es la que se encarga de iniciar el chatbot y mostrar el menu principal del restaurante.
@@ -19,6 +17,12 @@ posteriormente se encarga de leer la entrada del usuario y mostrar un mensaje de
 la consola.
 */
 function startChatbot() {
+
+    // Variables para almacenar temporalmente los datos del cliente.    
+    let contactStep = null; 
+    let contactName = "";
+    let contactMessage = "";
+
     console.log("== Chatbot Restaurante XYZ ==");
     console.log(menus.getMainMenu());
 
