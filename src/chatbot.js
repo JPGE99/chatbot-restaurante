@@ -126,7 +126,7 @@ if (contactStep === "message") {
             case"5":
                 console.log("Cerrando el chatbot. ¡Hasta luego!");
                 rl.close();
-                break;
+                return;
             default: 
                 console.log("Opcion no valida. por favor ingrese un numero del 1 al 5.");
                 break;
